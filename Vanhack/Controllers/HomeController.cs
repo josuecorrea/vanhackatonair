@@ -198,8 +198,6 @@ namespace Vanhack.Controllers
 
                 ViewBag.ListOfJobs = listJob.ToList();
                 ViewBag.User = user;
-                //ViewBag.CompanyName = companyName;
-                //ViewBag.PrincipalSkill = princialSkill;
             }
 
             return View();
