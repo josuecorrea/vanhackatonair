@@ -163,17 +163,20 @@ namespace Vanhack.Controllers
                 var user = context.User.Find(userId);
                 var jobForUserPosition = context.JobModel.Where(c => c.Position == user.Position).ToList();
 
+                
+
                 var jobForPrinciipalSkill = context.JobModel.Where(c => c.PrincipalSkill == user.PrincipalSkill).ToList();
 
 
                 foreach (var job in jobForUserPosition)
                 {
                     var princialSkill = context.Skill.Find(job.PrincipalSkill).SkillName;
+                    var companyName = context.Company.Find(job.CompanyId).Name;
 
                     listJob.Add(new JobDTO
                     {
                         CityCountry = job.City + ", " + job.Country,
-                        CompanyName = job.Company.Name,
+                        CompanyName = companyName,
                         Id = job.Id,
                         Position = job.Position,
                         PrincipalSkill = princialSkill,
