@@ -1,0 +1,83 @@
+﻿@{
+    var listOfUsers = (List<Vanhack.DTO.ListUserPrincipalSkillDTO>)ViewBag.ListOfUsers;
+    var job = (Vanhack.Models.JobModel)ViewBag.Job;
+    var companyName = (string)ViewBag.CompanyName;
+    var principalSkill = (string)ViewBag.PrincipalSkill;
+}
+
+<div style="padding-left:20px; padding-right:20px; padding-top:10px;">
+    <div class="card card-block sameheight-item">
+        <div class="title-block">
+            <h3 class="title"> Job Discription </h3>
+        </div>
+        <form>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 form-control-label">Company</label>
+                <div class="col-sm-10"> <label>@companyName || @job.City - @job.Country</label> </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 form-control-label">Position</label>
+                <div class="col-sm-10"> <label>@job.Position || Principal Skill: @principalSkill </label> </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 form-control-label">Qualifications</label>
+                <div class="col-sm-10"> <label>@job.Qualifications</label> </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 form-control-label">Responsibilities</label>
+                <div class="col-sm-10"> <label>@job.Responsibilities</label> </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 form-control-label">About</label>
+                <div class="col-sm-10"> <label>@job.AboutUs</label> </div>
+            </div>
+
+        </form>
+    </div>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-block">
+                        <div class="card-title-block">
+                            <h3 class="title"> List of possible candidates </h3>
+                        </div>
+                        <section class="example">
+                            <div>
+                                <table style="font-size:14px; font:normal" class="table table-condensed table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:60px;">First Name</th>
+                                            <th style="width:60px;">Last Name</th>
+                                            <th>Position</th>
+                                            <th>Principal Skill</th>
+                                            <th>Years of Experience</th>
+                                            <th>English Level</th>
+                                            <th>Email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in listOfUsers)
+            {
+                                            <tr>
+                                                <th>@item.FirstName</th>
+                                                <th>@item.LastName</th>
+                                                <th>@item.Position</th>
+                                                <th>@item.PricinpalSkill</th>
+                                                <th>@item.YearsOfExprience</th>
+                                                <th>@item.EnglishLevel</th>
+                                                <th>@item.Email</th>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

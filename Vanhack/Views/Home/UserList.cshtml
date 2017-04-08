@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    var listOfJobs = (List<Vanhack.DTO.UserDTO>)ViewBag.ListOfUser;
+}
+
+<article class="content items-list-page">
+    <div class="title-search-block">
+        <div class="title-block">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="title">
+                        Jobs
+                    </h3>
+                    <p class="title-description"> List of sample items - e.g. books, movies, events, etc... </p>
+                </div>
+            </div>
+        </div>
+        <div class="items-search">
+            <form class="form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control boxed rounded-s" placeholder="Search for..."> <span class="input-group-btn">
+                        <button class="btn btn-secondary rounded-s" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card items">
+        <ul class="item-list striped">
+            <li class="item item-list-header hidden-sm-down">
+                <div class="item-row">
+                    <div class="item-col item-col-header fixed item-col-img md">
+                        <div> <span></span> </div>
+                    </div>
+                    <div class="item-col item-col-header item-col-title">
+                        <div> <span>Name</span> </div>
+                    </div>
+                    <div class="item-col item-col-header item-col-category">
+                        <div class="no-overflow"> <span>Position</span> </div>
+                    </div>
+                    <div class="item-col item-col-header item-col-sales">
+                        <div> <span>Principal Skill</span> </div>
+                    </div>
+                    <div class="item-col item-col-header item-col-stats">
+                        <div class="no-overflow"> <span>Skils</span> </div>
+                    </div>
+                    
+                    <div class="item-col item-col-header item-col-date">
+                        <div> <span>Years Of Experience</span> </div>
+                    </div>
+                    <div class="item-col item-col-header fixed item-col-actions-dropdown"> </div>
+                </div>
+            </li>
+            @foreach (var item in listOfJobs)
+            {
+                <li class="item">
+                    <div class="item-row">
+                        <div class="item-col fixed item-col-img md">
+                            <a href="item-editor.html">
+                                <div class="item-img rounded" style="background-image: url(https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg)"></div>
+                            </a>
+                        </div>
+                        <div class="item-col fixed pull-left item-col-title">
+                            <div class="item-heading">Name</div>
+                            <div>
+                                <a href="@Url.Action("UserView","Home", new { userId = @item.Id})" class="">
+                                    <h4 class="item-title"> @item.FirstName + @item.LastName </h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="item-col item-col-category no-overflow">
+                            <div class="item-heading">Category</div>
+                            <div class="no-overflow"> <a href="@Url.Action("UserView","Home", new { userId = @item.Id})">@item.Position</a> </div>
+                        </div>
+                        <div class="item-col item-col-stats no-overflow">
+                            <div class="item-heading">Stats</div>
+                            <div> @item..PrincipalSkill </div>
+                        </div>
+                        <div class="item-col item-col-sales">
+                            <div class="item-heading">Sales</div>
+                            <div> @item.Skills </div>
+                        </div>                     
+                        <div class="item-col item-col-date">
+                            <div class="item-heading">Published</div>
+                            <div class="no-overflow"> @item.YearsOfExperience</div>
+                        </div>
+                        
+                    </div>
+                </li>
+            }
+           
+        </ul>
+    </div>
+</article>

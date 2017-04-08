@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> VANHACKATHON </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="~/Content/app-blue.css">
+    <link rel="stylesheet" href="~/Content/vendor.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script>
+            var themeSettings = (localStorage.getItem('themeSettings')) ? JSON.parse(localStorage.getItem('themeSettings')) :
+            {};
+            var themeName = themeSettings.themeName || '';
+            if (themeName)
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="~/Content/app-' + themeName + '.css">');
+            }
+            else
+            {
+                document.write('<link rel="stylesheet" id="theme-style" href="~/Content/app.css">');
+            }
+    </script>
+</head>
+<body>
+    @*@Html.Partial("_Header")*@
+    @Html.Partial("_Aside")
+    <div class="main-wrapper">
+        <div class="app" id="app">
+            @RenderBody()
+           
+           
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/js/vendor.js"></script>
+<script src="~/Scripts/js/app.js"></script>
